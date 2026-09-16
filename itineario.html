@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CDMX en 4 Días</title>
+<meta name="description" content="Itinerario día por día del 1 al 4 de octubre en Ciudad de México: Centro, Chapultepec, Polanco y lucha libre.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=Bungee&display=swap">
+<style>
+  :root{
+    --bg:#FBF4E9;
+    --surface:#FFFFFF;
+    --surface-2:#F4E7D4;
+    --ink:#241925;
+    --ink-soft:#6E6070;
+    --line:#E7D8C0;
+    --accent:#D81E5B;
+    --accent-soft:#FBDDE7;
+    --blue:#1C5D8C;
+    --blue-soft:#DDEAF3;
+    --gold:#B67A1E;
+    --gold-soft:#F3E3C4;
+    --teal:#177266;
+    --teal-soft:#DCEEEA;
+    --shadow:0 2px 12px rgba(36,25,37,.10);
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#181019;
+      --surface:#221824;
+      --surface-2:#2C2030;
+      --ink:#F3E9E4;
+      --ink-soft:#C7B7C4;
+      --line:#3B2C3C;
+      --accent:#FF6D97;
+      --accent-soft:#4A1F2E;
+      --blue:#7FC0EC;
+      --blue-soft:#1C3446;
+      --gold:#E8B75B;
+      --gold-soft:#3E3018;
+      --teal:#5FCBB9;
+      --teal-soft:#173430;
+      --shadow:0 2px 16px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#181019;
+    --surface:#221824;
+    --surface-2:#2C2030;
+    --ink:#F3E9E4;
+    --ink-soft:#C7B7C4;
+    --line:#3B2C3C;
+    --accent:#FF6D97;
+    --accent-soft:#4A1F2E;
+    --blue:#7FC0EC;
+    --blue-soft:#1C3446;
+    --gold:#E8B75B;
+    --gold-soft:#3E3018;
+    --teal:#5FCBB9;
+    --teal-soft:#173430;
+    --shadow:0 2px 16px rgba(0,0,0,.45);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-variant-numeric:tabular-nums;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;text-wrap:balance;margin:0}
+  img{max-width:100%}
+
+  .wrap{max-width:640px;margin-inline:auto;padding:0 16px 48px}
+
+  header.top{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:14px 16px 10px;
+  }
+  header.top .title-row{max-width:640px;margin-inline:auto}
+  header.top h1{font-size:22px;font-weight:700;color:var(--ink)}
+  header.top p{margin:2px 0 12px;color:var(--ink-soft);font-size:13px}
+  nav.daynav{display:flex;gap:8px;max-width:640px;margin-inline:auto;overflow-x:auto;scrollbar-width:none}
+  nav.daynav::-webkit-scrollbar{display:none}
+  nav.daynav a{
+    flex:0 0 auto;padding:7px 14px;border-radius:999px;background:var(--surface-2);
+    color:var(--ink);text-decoration:none;font-size:13px;font-weight:600;
+    border:1px solid var(--line);white-space:nowrap;
+  }
+
+  .summary{
+    margin-top:16px;background:var(--surface);border:1px solid var(--line);
+    border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;
+  }
+  .summary .item{display:flex;flex-direction:column;gap:2px}
+  .summary .item .label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+  .summary .item .value{font-size:14.5px;font-weight:600}
+  .summary .full{grid-column:1/-1}
+
+  section.day{margin-top:34px;scroll-margin-top:96px}
+  .day-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .day-chip{
+    font-family:'Fraunces',serif;font-weight:700;font-size:19px;
+    width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    color:#fff;flex:0 0 auto;
+  }
+  .d1 .day-chip{background:var(--blue)} .d1 .tag{background:var(--blue-soft);color:var(--blue)}
+  .d2 .day-chip{background:var(--accent)} .d2 .tag{background:var(--accent-soft);color:var(--accent)}
+  .d3 .day-chip{background:var(--gold)} .d3 .tag{background:var(--gold-soft);color:var(--gold)}
+  .d4 .day-chip{background:var(--teal)} .d4 .tag{background:var(--teal-soft);color:var(--teal)}
+  .day-head h2{font-size:20px}
+  .day-head .sub{font-size:13px;color:var(--ink-soft);margin-top:2px}
+
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 9px;border-radius:999px;margin-top:2px}
+
+  ol.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:20px}
+  ol.timeline li{position:relative;padding:0 0 20px 22px}
+  ol.timeline li::before{
+    content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;
+    background:var(--surface);border:2px solid var(--line);
+  }
+  ol.timeline li.hl::before{border-color:currentColor}
+  .d1 li.hl::before{color:var(--blue)} .d2 li.hl::before{color:var(--accent)}
+  .d3 li.hl::before{color:var(--gold)} .d4 li.hl::before{color:var(--teal)}
+
+  .row-time{font-weight:700;font-size:13px;color:var(--ink-soft);margin-bottom:2px}
+  .row-title{font-weight:600;font-size:15px}
+  .row-note{font-size:13.5px;color:var(--ink-soft);margin-top:3px;line-height:1.42}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .badge{
+    font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;
+    background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--line);
+  }
+  .badge.lucha{
+    font-family:'Bungee',cursive;font-size:10.5px;letter-spacing:.02em;
+    background:var(--accent);color:#fff;border:none;padding:5px 10px;
+  }
+
+  .callout{
+    margin-top:16px;background:var(--surface);border:1px dashed var(--line);
+    border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--ink-soft);
+  }
+  .callout strong{color:var(--ink)}
+
+  .ref{margin-top:44px}
+  .ref h2{font-size:19px;margin-bottom:10px}
+  .ref-grid{display:grid;grid-template-columns:1fr;gap:10px}
+  .ref-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:13px 15px;box-shadow:var(--shadow);
+  }
+  .ref-card h3{font-size:14px;margin-bottom:6px}
+  .ref-card table{width:100%;border-collapse:collapse;font-size:13px}
+  .ref-card td{padding:4px 0;vertical-align:top;border-top:1px solid var(--line)}
+  .ref-card tr:first-child td{border-top:none}
+  .ref-card td.place{font-weight:600;width:44%}
+  .ref-card td.addr{color:var(--ink-soft)}
+
+  footer{margin-top:36px;text-align:center;font-size:12px;color:var(--ink-soft)}
+
+  @media (max-width:400px){
+    .summary{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="title-row">
+    <h1>CDMX en 4 Días</h1>
+    <p>Del 1 al 4 de octubre 2026 · Zona Revolución / Tabacalera</p>
+  </div>
+  <nav class="daynav">
+    <a href="#resumen">Resumen</a>
+    <a href="#dia1">Día 1 · Jue</a>
+    <a href="#dia2">Día 2 · Vie</a>
+    <a href="#dia3">Día 3 · Sáb</a>
+    <a href="#dia4">Día 4 · Dom</a>
+    <a href="#ref">Direcciones</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <div class="summary" id="resumen">
+    <div class="item"><span class="label">Llegada</span><span class="value">Jue 1 Oct, ~5:30am</span></div>
+    <div class="item"><span class="label">Salida</span><span class="value">Dom 4 Oct, 9:50pm (nacional)</span></div>
+    <div class="item"><span class="label">Airbnb</span><span class="value">Check-in 2pm · Checkout 11am</span></div>
+    <div class="item"><span class="label">Lucha libre</span><span class="value">CMLL Arena México, vie 8:30pm</span></div>
+    <div class="item full"><span class="label">Maletas (llegada y salida)</span><span class="value">Pedir a tu host que las reciba/guarde temprano, o casillero por app (Nannybag / Stasher / Qeepl / WeKeep) cerca de Revolución</span></div>
+  </div>
+
+  <section class="day d1" id="dia1">
+    <div class="day-head">
+      <div class="day-chip">1</div>
+      <div>
+        <h2>Jueves 1 Oct</h2>
+        <div class="sub">Llegada · Centro / Alameda · Revolución</div>
+      </div>
+    </div>
+    <ol class="timeline">
+      <li class="hl">
+        <div class="row-time">05:30</div>
+        <div class="row-title">Aterrizaje AICM</div>
+        <div class="row-note">Migración y aduana. Sal hacia el Centro en Uber (~30-40 min).</div>
+      </li>
+      <li>
+        <div class="row-time">06:30</div>
+        <div class="row-title">Maletas</div>
+        <div class="row-note">Avisa a tu host que llegas temprano — muchos reciben maleta aunque el cuarto no esté listo. Si no, casillero cerca de Revolución.</div>
+      </li>
+      <li>
+        <div class="row-time">07:30</div>
+        <div class="row-title">Desayuno clásico en el Centro</div>
+        <div class="row-note">Chilaquiles, tamales o atole — cualquier fonda de la zona de Alameda.</div>
+      </li>
+      <li>
+        <div class="row-time">08:30</div>
+        <div class="row-title">Alameda Central + Palacio de Bellas Artes</div>
+        <div class="row-note">Caminata tranquila, poca gente a esta hora. Interior abre cerca de las 10am.</div>
+        <div class="badges"><span class="badge">🚶 Caminando</span></div>
+      </li>
+      <li>
+        <div class="row-time">09:15</div>
+        <div class="row-title">Casa de los Azulejos</div>
+        <div class="row-note">Madero 4 — Sanborns histórico, fachada de talavera azul.</div>
+      </li>
+      <li>
+        <div class="row-time">09:45</div>
+        <div class="row-title">Museo Munal</div>
+        <div class="row-note">Tacuba 8, a dos cuadras de Bellas Artes.</div>
+      </li>
+      <li>
+        <div class="row-time">10:15</div>
+        <div class="row-title">Barrio Chino</div>
+        <div class="row-note">Calle Dolores, entre Independencia y Artículo 123. Dos cuadras con tiendas y restaurantes.</div>
+        <div class="badges"><span class="badge">🚇 Bellas Artes / Juárez</span></div>
+      </li>
+      <li>
+        <div class="row-time">12:00</div>
+        <div class="row-title">Tiempo libre / almuerzo ligero</div>
+        <div class="row-note">Esperando el check-in — vienen de vuelo nocturno, no fuercen mucho más.</div>
+      </li>
+      <li class="hl">
+        <div class="row-time">14:00</div>
+        <div class="row-title">Check-in Airbnb</div>
+        <div class="row-note">Dejar maletas, ducha, siesta corta.</div>
+      </li>
+      <li>
+        <div class="row-time">18:00</div>
+        <div class="row-title">Monumento a la Revolución</div>
+        <div class="row-note">Mirador panorámico al atardecer — lo tienen a la vuelta.</div>
+      </li>
+      <li>
+        <div class="row-time">18:45</div>
+        <div class="row-title">Jardín Pushkin + Frontón México</div>
+        <div class="row-note">El edificio art déco del Frontón vale la foto aunque no haya función.</div>
+      </li>
+      <li>
+        <div class="row-time">20:30</div>
+        <div class="row-title">Cena ligera en San Rafael / Tabacalera</div>
+        <div class="row-note">Dormir temprano — el viernes es el día más pesado del viaje.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="day d2" id="dia2">
+    <div class="day-head">
+      <div class="day-chip">2</div>
+      <div>
+        <h2>Viernes 2 Oct</h2>
+        <div class="sub">Condesa · Chapultepec · Polanco · Lucha libre</div>
+      </div>
+    </div>
+    <div class="callout"><strong>Día maratón</strong> — no regresan al Airbnb hasta después de la función. Salgan con lo necesario para la noche (cambio ligero, tenis cómodos).</div>
+    <ol class="timeline">
+      <li class="hl">
+        <div class="row-time">08:00</div>
+        <div class="row-title">Desayuno en Chilpa</div>
+        <div class="row-note">Chilpancingo 35, Hipódromo Condesa — chilaquiles, a una cuadra del Parque México.</div>
+      </li>
+      <li>
+        <div class="row-time">08:45</div>
+        <div class="row-title">Revela photobooth</div>
+        <div class="row-note">Saltillo 45, Condesa. $100 MXN por 2 tiras — lleva billete exacto o tarjeta.</div>
+      </li>
+      <li>
+        <div class="row-time">09:15</div>
+        <div class="row-title">Traslado a Chapultepec</div>
+        <div class="badges"><span class="badge">🚕 Uber ~20 min</span></div>
+      </li>
+      <li class="hl">
+        <div class="row-time">09:45</div>
+        <div class="row-title">Museo Nacional de Antropología</div>
+        <div class="row-note">Enfóquense en salas Mexica y Maya — no da tiempo al recorrido completo hoy.</div>
+      </li>
+      <li>
+        <div class="row-time">12:15</div>
+        <div class="row-title">Comida cerca del parque</div>
+        <div class="row-note">Zoológico de Chapultepec (gratis) solo si sobra tiempo — es lo primero que se recorta si van tarde.</div>
+      </li>
+      <li class="hl">
+        <div class="row-time">13:15</div>
+        <div class="row-title">Acuario Inbursa</div>
+        <div class="row-note">Plaza Carso, Nuevo Polanco. Más de 350 especies — tiburones, pingüinos, medusas.</div>
+      </li>
+      <li>
+        <div class="row-time">15:00</div>
+        <div class="row-title">Museo Soumaya</div>
+        <div class="row-note">Vistazo rápido, gratis, mismo complejo. El edificio ya vale la parada.</div>
+      </li>
+      <li>
+        <div class="row-time">15:45</div>
+        <div class="row-title">Traslado a Antara / Polanco</div>
+        <div class="badges"><span class="badge">🚕 Uber ~15 min</span></div>
+      </li>
+      <li>
+        <div class="row-time">16:15</div>
+        <div class="row-title">House of Coca-Cola</div>
+        <div class="row-note">Alejandro Dumas 122, Polanco. Experiencia inmersiva + receta original de 1886.</div>
+      </li>
+      <li>
+        <div class="row-time">17:15</div>
+        <div class="row-title">Antara Polanco</div>
+        <div class="row-note">Rooftop, tiendas, buena luz de atardecer.</div>
+      </li>
+      <li>
+        <div class="row-time">18:15</div>
+        <div class="row-title">Snack / cena ligera ahí mismo</div>
+        <div class="row-note">No vuelven a casa — coman algo antes de ir a la arena.</div>
+      </li>
+      <li>
+        <div class="row-time">18:45</div>
+        <div class="row-title">Traslado a Arena México</div>
+        <div class="row-note">Viernes por la tarde: dale colchón de tiempo al tráfico.</div>
+        <div class="badges"><span class="badge">🚕 Uber ~25-40 min</span></div>
+      </li>
+      <li class="hl">
+        <div class="row-time">19:30</div>
+        <div class="row-title">Llegada a Arena México</div>
+        <div class="row-note">Compren boletos con anticipación. Cerveza, botana, máscara de recuerdo.</div>
+      </li>
+      <li class="hl">
+        <div class="row-time">20:30</div>
+        <div class="row-title">Función CMLL</div>
+        <div class="badges"><span class="badge lucha">¡LUCHA LIBRE!</span></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="day d3" id="dia3">
+    <div class="day-head">
+      <div class="day-chip">3</div>
+      <div>
+        <h2>Sábado 3 Oct</h2>
+        <div class="sub">Centro Histórico completo</div>
+      </div>
+    </div>
+    <ol class="timeline">
+      <li class="hl">
+        <div class="row-time">09:00</div>
+        <div class="row-title">Zócalo + Catedral Metropolitana</div>
+      </li>
+      <li>
+        <div class="row-time">10:00</div>
+        <div class="row-title">Templo Mayor</div>
+        <div class="row-note">Ruinas mexicas justo detrás de la Catedral.</div>
+      </li>
+      <li>
+        <div class="row-time">11:00</div>
+        <div class="row-title">Palacio Nacional</div>
+        <div class="row-note">Murales de Diego Rivera — verifica que esté abierto al público ese día.</div>
+      </li>
+      <li>
+        <div class="row-time">12:00</div>
+        <div class="row-title">Caminata por Madero</div>
+      </li>
+      <li>
+        <div class="row-time">12:30</div>
+        <div class="row-title">Pasaje Pimentel</div>
+        <div class="row-note">Souvenirs y monedas conmemorativas, a 5 min del Zócalo.</div>
+      </li>
+      <li class="hl">
+        <div class="row-time">13:00</div>
+        <div class="row-title">Café / comida en Librería Porrúa</div>
+        <div class="row-note">República de Argentina 15 — terraza "El Mayor" con vista al Templo Mayor.</div>
+      </li>
+      <li>
+        <div class="row-time">14:30</div>
+        <div class="row-title">Panadería Ideal</div>
+        <div class="row-note">Uruguay 74 — panadería histórica del Centro.</div>
+      </li>
+      <li>
+        <div class="row-time">15:00</div>
+        <div class="row-title">Palacio de Bellas Artes</div>
+        <div class="row-note">Revisen cartelera — el interior también vale la pena.</div>
+      </li>
+      <li>
+        <div class="row-time">16:00</div>
+        <div class="row-title">Torre Latinoamericana</div>
+        <div class="row-note">Mirador al atardecer, 360° de la ciudad. Alternativa: Turibús nocturno por Reforma/Centro iluminado.</div>
+      </li>
+      <li>
+        <div class="row-time">17:30</div>
+        <div class="row-title">Ángel de la Independencia</div>
+        <div class="row-note">Paseo de la Reforma, zona Zona Rosa.</div>
+        <div class="badges"><span class="badge">🚇 Insurgentes / Sevilla</span></div>
+      </li>
+      <li class="hl">
+        <div class="row-time">19:00</div>
+        <div class="row-title">Cena en Ling Ling</div>
+        <div class="row-note">Reforma 509, piso 56 — mismo edificio, vista de la ciudad de noche.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="day d4" id="dia4">
+    <div class="day-head">
+      <div class="day-chip">4</div>
+      <div>
+        <h2>Domingo 4 Oct</h2>
+        <div class="sub">Chapultepec (1ª Sección) · Salida</div>
+      </div>
+    </div>
+    <ol class="timeline">
+      <li class="hl">
+        <div class="row-time">09:00</div>
+        <div class="row-title">Checkout</div>
+        <div class="row-note">Maleta a un casillero (Nannybag / Stasher / Qeepl / WeKeep) cerca de Revolución — de paso hacia el aeropuerto más tarde.</div>
+      </li>
+      <li>
+        <div class="row-time">09:15</div>
+        <div class="row-title">Traslado a Chapultepec</div>
+        <div class="badges"><span class="badge">🚕 Uber ~15-20 min</span></div>
+      </li>
+      <li class="hl">
+        <div class="row-time">09:45</div>
+        <div class="row-title">Castillo de Chapultepec</div>
+        <div class="row-note">Pasando por el Monumento a los Niños Héroes al subir.</div>
+      </li>
+      <li>
+        <div class="row-time">11:15</div>
+        <div class="row-title">Museo de Arte Moderno o Museo Tamayo</div>
+      </li>
+      <li>
+        <div class="row-time">12:45</div>
+        <div class="row-title">Lago de Chapultepec</div>
+        <div class="row-note">Paseo en lancha — buen momento en pareja.</div>
+      </li>
+      <li>
+        <div class="row-time">13:30</div>
+        <div class="row-title">Comida cerca del parque</div>
+      </li>
+      <li>
+        <div class="row-time">14:30</div>
+        <div class="row-title">Tiempo libre</div>
+        <div class="row-note">Jardín botánico, más parque, o simplemente descansar.</div>
+      </li>
+      <li>
+        <div class="row-time">16:45</div>
+        <div class="row-title">Traslado de regreso a Revolución</div>
+      </li>
+      <li>
+        <div class="row-time">17:15</div>
+        <div class="row-title">Recoger maleta del casillero</div>
+      </li>
+      <li class="hl">
+        <div class="row-time">17:45</div>
+        <div class="row-title">Salida al aeropuerto</div>
+        <div class="row-note">Llegada estimada ~18:30 — más de 3h de margen antes del vuelo.</div>
+      </li>
+      <li class="hl">
+        <div class="row-time">21:50</div>
+        <div class="row-title">Vuelo de regreso</div>
+      </li>
+    </ol>
+    <div class="callout"><strong>Quedaron pendientes por falta de tiempo:</strong> Dong Zi Gongfu Te (dim sum, solo sáb/dom por la mañana, Narvarte) y Basílica de Guadalupe + Cerro del Tepeyac + Acuario Michin (zona norte aislada). Si en algún momento sobra energía y quieren mover algo, avísenme.</div>
+  </section>
+
+  <div class="ref" id="ref">
+    <h2>Direcciones clave</h2>
+    <div class="ref-grid">
+      <div class="ref-card">
+        <h3>Centro Histórico</h3>
+        <table>
+          <tr><td class="place">Casa de los Azulejos</td><td class="addr">Madero 4</td></tr>
+          <tr><td class="place">Museo Munal</td><td class="addr">Tacuba 8</td></tr>
+          <tr><td class="place">Barrio Chino</td><td class="addr">Calle Dolores (Independencia–Artículo 123)</td></tr>
+          <tr><td class="place">Pasaje Pimentel</td><td class="addr">Cerca de Madero / Eje Central</td></tr>
+          <tr><td class="place">Librería Porrúa</td><td class="addr">Rep. de Argentina 15</td></tr>
+          <tr><td class="place">Panadería Ideal</td><td class="addr">Uruguay 74</td></tr>
+        </table>
+      </div>
+      <div class="ref-card">
+        <h3>Reforma / Condesa</h3>
+        <table>
+          <tr><td class="place">Ángel de la Independencia</td><td class="addr">Paseo de la Reforma</td></tr>
+          <tr><td class="place">Ling Ling</td><td class="addr">Reforma 509, piso 56</td></tr>
+          <tr><td class="place">Chilpa</td><td class="addr">Chilpancingo 35, Condesa</td></tr>
+          <tr><td class="place">Revela photobooth</td><td class="addr">Saltillo 45, Condesa</td></tr>
+        </table>
+      </div>
+      <div class="ref-card">
+        <h3>Chapultepec / Polanco</h3>
+        <table>
+          <tr><td class="place">Acuario Inbursa + Soumaya</td><td class="addr">Plaza Carso, Nuevo Polanco</td></tr>
+          <tr><td class="place">House of Coca-Cola</td><td class="addr">Alejandro Dumas 122, Polanco</td></tr>
+          <tr><td class="place">Antara Polanco</td><td class="addr">Av. Ejército Nacional, Polanco</td></tr>
+        </table>
+      </div>
+      <div class="ref-card">
+        <h3>Metro útil</h3>
+        <table>
+          <tr><td class="place">Revolución</td><td class="addr">Línea 2</td></tr>
+          <tr><td class="place">Bellas Artes</td><td class="addr">Líneas 2 y 8</td></tr>
+          <tr><td class="place">Zócalo</td><td class="addr">Línea 2</td></tr>
+          <tr><td class="place">Chapultepec</td><td class="addr">Línea 1</td></tr>
+          <tr><td class="place">Polanco</td><td class="addr">Línea 7</td></tr>
+          <tr><td class="place">Insurgentes / Sevilla</td><td class="addr">Línea 1</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>Itinerario CDMX · 1–4 octubre 2026</footer>
+</div>
+</body>
+</html>
